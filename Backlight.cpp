@@ -113,11 +113,8 @@ void showBacklight(){
       break;
     case 255: //loop
       fadeToBlackBy(backlight_leds, BACKLIGHT_NUM_LEDS , 255 - backlightBrightness );
-      if (loopIndex >= BACKLIGHT_NUM_LEDS) {
-        loopIndex = 0; // Reset loop index when it reaches the end
-      }
+      loopIndex = (loopIndex + 1) % BACKLIGHT_NUM_LEDS;
       backlight_leds[ledIndex[loopIndex]] = backlight1;
-      loopIndex++;
       break;
     default:
       effectID=0; //in case it was invalid
